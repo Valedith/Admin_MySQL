@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a45327c86ad145a88757fec47df3af57" Name="Diagram1">
+        <EntityTypeShape EntityType="httt_dnModel.capdo" Width="1.5" PointX="3.75" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="httt_dnModel.customer" Width="1.5" PointX="0.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="httt_dnModel.hangsanpham" Width="1.5" PointX="6" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="httt_dnModel.hinhanh" Width="1.5" PointX="10.5" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="httt_dnModel.hinhthucthanhtoan" Width="1.5" PointX="0.75" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="httt_dnModel.hoadonban" Width="1.5" PointX="11.25" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="httt_dnModel.hoadonmua" Width="1.5" PointX="3" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="httt_dnModel.khuyenmai" Width="1.5" PointX="8.25" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="httt_dnModel.khuyenmaihethong" Width="1.5" PointX="8.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="httt_dnModel.loaisanpham" Width="1.5" PointX="6" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="httt_dnModel.mausac" Width="1.5" PointX="11.25" PointY="18" IsExpanded="true" />
+        <EntityTypeShape EntityType="httt_dnModel.merchant" Width="1.5" PointX="6" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="httt_dnModel.sanpham" Width="1.5" PointX="8.25" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="httt_dnModel.sanpham_khuyenmai" Width="1.5" PointX="13.5" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="httt_dnModel.sanpham_khuyenmaihethong" Width="1.5" PointX="10.5" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="httt_dnModel.sanpham_mausac" Width="1.5" PointX="13.5" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="httt_dnModel.sanpham_thongsokythuat" Width="1.5" PointX="13.5" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="httt_dnModel.thongsokythuat" Width="1.5" PointX="11.25" PointY="15" IsExpanded="true" />
+        <EntityTypeShape EntityType="httt_dnModel.tinhtranggiaohang" Width="1.5" PointX="0.75" PointY="15.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="httt_dnModel.tinhtrangton" Width="1.5" PointX="6" PointY="7.25" IsExpanded="true" />
+        <AssociationConnector Association="httt_dnModel.merchant_ibfk_1" ManuallyRouted="false" />
+        <AssociationConnector Association="httt_dnModel.hoadonmua_ibfk_1" ManuallyRouted="false" />
+        <AssociationConnector Association="httt_dnModel.merchant_ibfk_2" ManuallyRouted="false" />
+        <AssociationConnector Association="httt_dnModel.sanpham_ibfk_1" ManuallyRouted="false" />
+        <AssociationConnector Association="httt_dnModel.hinhanh_ibfk_1" ManuallyRouted="false" />
+        <AssociationConnector Association="httt_dnModel.hoadonban_ibfk_3" ManuallyRouted="false" />
+        <AssociationConnector Association="httt_dnModel.hoadonmua_ibfk_2" ManuallyRouted="false" />
+        <AssociationConnector Association="httt_dnModel.hoadonban_ibfk_1" ManuallyRouted="false" />
+        <AssociationConnector Association="httt_dnModel.hoadonban_ibfk_2" ManuallyRouted="false" />
+        <AssociationConnector Association="httt_dnModel.hoadonban_ibfk_4" ManuallyRouted="false" />
+        <AssociationConnector Association="httt_dnModel.hoadonban_ibfk_5" ManuallyRouted="false" />
+        <AssociationConnector Association="httt_dnModel.hoadonmua_ibfk_3" ManuallyRouted="false" />
+        <AssociationConnector Association="httt_dnModel.FK_sanpham_khuyenmai_khuyenmaiID" ManuallyRouted="false" />
+        <AssociationConnector Association="httt_dnModel.khuyenmai_ibfk_1" ManuallyRouted="false" />
+        <AssociationConnector Association="httt_dnModel.FK_sanpham_khuyenmaihethong_khuyenmaihethongID" ManuallyRouted="false" />
+        <AssociationConnector Association="httt_dnModel.sanpham_ibfk_2" ManuallyRouted="false" />
+        <AssociationConnector Association="httt_dnModel.FK_sanpham_mausac_mausacID" ManuallyRouted="false" />
+        <AssociationConnector Association="httt_dnModel.sanpham_ibfk_4" ManuallyRouted="false" />
+        <AssociationConnector Association="httt_dnModel.FK_sanpham_khuyenmai_sanphamID" ManuallyRouted="false" />
+        <AssociationConnector Association="httt_dnModel.FK_sanpham_khuyenmaihethong_sanphamID" ManuallyRouted="false" />
+        <AssociationConnector Association="httt_dnModel.FK_sanpham_mausac_sanphamID" ManuallyRouted="false" />
+        <AssociationConnector Association="httt_dnModel.FK_sanpham_thongsokythuat_sanphamID" ManuallyRouted="false" />
+        <AssociationConnector Association="httt_dnModel.sanpham_ibfk_3" ManuallyRouted="false" />
+        <AssociationConnector Association="httt_dnModel.FK_sanpham_thongsokythuat_thongsokythuatID" ManuallyRouted="false" />
+        <AssociationConnector Association="httt_dnModel.loaisanpham_hangsanpham" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="httt_dnModel.danhgia" Width="1.5" PointX="13.5" PointY="13.875" />
+        <AssociationConnector Association="httt_dnModel.danhgia_ibfk_2" />
+        <AssociationConnector Association="httt_dnModel.danhgia_ibfk_1" />
+        <AssociationConnector Association="httt_dnModel.hoadonban_mausac_mausacID" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,63 @@
+﻿@model Admin_MySQL.Models.khuyenmai
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div id="page-wrapper">
+    <div class="row">
+        <h2>Details</h2>
+
+        <div>
+            <h4>khuyenmai</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.tenkhuyenmai)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.tenkhuyenmai)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.ngaybatdau)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.ngaybatdau)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.ngayketthuc)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.ngayketthuc)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.muckhuyenmaitoida)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.muckhuyenmaitoida)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.merchant.cmnd)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.merchant.cmnd)
+                </dd>
+
+            </dl>
+        </div>
+        <p>
+            @Html.ActionLink("Edit", "Edit", new { id = Model.khuyenmai_id }) |
+            @Html.ActionLink("Back to List", "Index")
+        </p>
+
+    </div>
+</div>

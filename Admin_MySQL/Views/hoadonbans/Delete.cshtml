@@ -1,0 +1,102 @@
+﻿@model Admin_MySQL.Models.hoadonban
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<div id="page-wrapper">
+    <div class="row">
+        <h2>Delete</h2>
+
+        <h3>Are you sure you want to delete this?</h3>
+        <div>
+            <h4>hoadonban</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.ngaytao)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.ngaytao)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.ngayhoanthanh)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.ngayhoanthanh)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.noigui)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.noigui)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.soluong)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.soluong)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.hinhthucthanhtoan.tenhinhthucthanhtoan)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.hinhthucthanhtoan.tenhinhthucthanhtoan)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.sanpham.tensanpham)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.sanpham.tensanpham)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.merchant.cmnd)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.merchant.cmnd)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.tinhtranggiaohang.tentinhtranggiaohang)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.tinhtranggiaohang.tentinhtranggiaohang)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.hoadonmua.noinhan)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.hoadonmua.noinhan)
+                </dd>
+
+            </dl>
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-actions no-color">
+                    <input type="submit" value="Delete" class="btn btn-default" /> |
+                    @Html.ActionLink("Back to List", "Index")
+                </div>
+            }
+        </div>
+
+    </div>
+</div>

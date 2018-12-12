@@ -1,0 +1,98 @@
+﻿@model Admin_MySQL.Models.hoadonmua
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>hoadonmua</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.noinhan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.noinhan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.sosanpham)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sosanpham)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ngaytao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ngaytao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tongtien)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tongtien)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.hoten)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.hoten)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.sodienthoai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sodienthoai)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.customer.username)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.customer.username)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.hinhthucthanhtoan.tenhinhthucthanhtoan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.hinhthucthanhtoan.tenhinhthucthanhtoan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tinhtranggiaohang.tentinhtranggiaohang)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tinhtranggiaohang.tentinhtranggiaohang)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.hoadonmua_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

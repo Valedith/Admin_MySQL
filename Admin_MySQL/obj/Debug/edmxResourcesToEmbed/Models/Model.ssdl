@@ -1,0 +1,719 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="httt_dnModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="8.0" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="capdo">
+    <Key>
+      <PropertyRef Name="capdo_id" />
+    </Key>
+    <Property Name="capdo_id" Type="uint" Nullable="false" />
+    <Property Name="tencapdo" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="muckhuyenmaiquangcao" Type="uint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="customer">
+    <Key>
+      <PropertyRef Name="customer_id" />
+    </Key>
+    <Property Name="customer_id" Type="uint" Nullable="false" />
+    <Property Name="username" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="salt" Type="char" MaxLength="32" Nullable="false" />
+    <Property Name="password" Type="char" MaxLength="128" Nullable="false" />
+    <Property Name="email" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="ngaydangky" Type="date" />
+    <Property Name="tienao" Type="uint" Nullable="false" />
+    <Property Name="tinhtrangkichhoat" Type="bool" />
+    <Property Name="hoten" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="ngaysinh" Type="date" />
+    <Property Name="sodienthoai" Type="varchar" MaxLength="11" />
+    <Property Name="gioitinh" Type="bool" />
+    <Property Name="diachi" Type="varchar" MaxLength="200" />
+    <Property Name="ismechant" Type="bool" />
+  </EntityType>
+  <EntityType Name="danhgia">
+    <Key>
+      <PropertyRef Name="danhgia_id" />
+    </Key>
+    <Property Name="danhgia_id" Type="uint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="noidungdanhgia" Type="varchar" MaxLength="300" />
+    <Property Name="rating" Type="uint" />
+    <Property Name="sanpham_id" Type="uint" />
+    <Property Name="customer_id" Type="uint" />
+    <Property Name="ngaydanhgia" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="hangsanpham">
+    <Key>
+      <PropertyRef Name="hangsanpham_id" />
+    </Key>
+    <Property Name="hangsanpham_id" Type="uint" Nullable="false" />
+    <Property Name="tenhangsanpham" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="hinhanh">
+    <Key>
+      <PropertyRef Name="hinhanh_id" />
+    </Key>
+    <Property Name="hinhanh_id" Type="uint" Nullable="false" />
+    <Property Name="noidunghinhanh" Type="varchar" MaxLength="300" Nullable="false" />
+    <Property Name="sanpham_id" Type="uint" />
+  </EntityType>
+  <EntityType Name="hinhthucthanhtoan">
+    <Key>
+      <PropertyRef Name="hinhthucthanhtoan_id" />
+    </Key>
+    <Property Name="hinhthucthanhtoan_id" Type="uint" Nullable="false" />
+    <Property Name="tenhinhthucthanhtoan" Type="varchar" MaxLength="30" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6005: The data type 'udecimal' is currently not supported for the target Entity Framework version; the column 'thanhtien' in the table 'def.httt_dn.hoadonban' was excluded.-->
+  <EntityType Name="hoadonban">
+    <Key>
+      <PropertyRef Name="hoadonban_id" />
+    </Key>
+    <Property Name="hoadonban_id" Type="uint" Nullable="false" />
+    <Property Name="ngaytao" Type="date" />
+    <Property Name="ngayhoanthanh" Type="date" />
+    <Property Name="noigui" Type="varchar" MaxLength="200" />
+    <Property Name="soluong" Type="uint" />
+    <Property Name="sanpham_id" Type="uint" />
+    <Property Name="merchant_id" Type="uint" />
+    <Property Name="hinhthucthanhtoan_id" Type="uint" />
+    <Property Name="tinhtranggiaohang_id" Type="uint" />
+    <Property Name="hoadonmua_id" Type="uint" />
+    <Property Name="mausac_id" Type="uint" />
+  </EntityType>
+  <EntityType Name="hoadonmua">
+    <Key>
+      <PropertyRef Name="hoadonmua_id" />
+    </Key>
+    <Property Name="hoadonmua_id" Type="uint" Nullable="false" />
+    <Property Name="noinhan" Type="varchar" MaxLength="200" />
+    <Property Name="sosanpham" Type="uint" />
+    <Property Name="ngaytao" Type="date" />
+    <Property Name="tongtien" Type="decimal" Precision="10" Scale="0" />
+    <Property Name="customer_id" Type="uint" />
+    <Property Name="hinhthucthanhtoan_id" Type="uint" />
+    <Property Name="tinhtranggiaohang_id" Type="uint" />
+    <Property Name="hoten" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="sodienthoai" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="email" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="khuyenmai">
+    <Key>
+      <PropertyRef Name="khuyenmai_id" />
+    </Key>
+    <Property Name="khuyenmai_id" Type="uint" Nullable="false" />
+    <Property Name="tenkhuyenmai" Type="varchar" MaxLength="300" />
+    <Property Name="ngaybatdau" Type="date" />
+    <Property Name="ngayketthuc" Type="date" />
+    <Property Name="muckhuyenmaitoida" Type="int" />
+    <Property Name="merchant_id" Type="uint" />
+  </EntityType>
+  <EntityType Name="khuyenmaihethong">
+    <Key>
+      <PropertyRef Name="khuyenmaihethong_id" />
+    </Key>
+    <Property Name="khuyenmaihethong_id" Type="uint" Nullable="false" />
+    <Property Name="tenkhuyenmaihethong" Type="varchar" MaxLength="300" />
+    <Property Name="ngaybatdau" Type="date" />
+    <Property Name="ngayketthuc" Type="date" />
+    <Property Name="muckhuyenmaitoida" Type="int" />
+  </EntityType>
+  <EntityType Name="loaisanpham">
+    <Key>
+      <PropertyRef Name="loaisanpham_id" />
+    </Key>
+    <Property Name="loaisanpham_id" Type="uint" Nullable="false" />
+    <Property Name="tenloaisanpham" Type="varchar" MaxLength="40" Nullable="false" />
+  </EntityType>
+  <EntityType Name="loaisanpham_hangsanpham">
+    <Key>
+      <PropertyRef Name="loaisanpham_id" />
+      <PropertyRef Name="hangsanpham_id" />
+    </Key>
+    <Property Name="loaisanpham_id" Type="uint" Nullable="false" />
+    <Property Name="hangsanpham_id" Type="uint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="mausac">
+    <Key>
+      <PropertyRef Name="mausac_id" />
+    </Key>
+    <Property Name="mausac_id" Type="uint" Nullable="false" />
+    <Property Name="tenmausac" Type="varchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="merchant">
+    <Key>
+      <PropertyRef Name="merchant_id" />
+    </Key>
+    <Property Name="merchant_id" Type="uint" Nullable="false" />
+    <Property Name="cmnd" Type="char" MaxLength="11" />
+    <Property Name="tenshop" Type="varchar" MaxLength="100" />
+    <Property Name="anhshop" Type="varchar" MaxLength="300" />
+    <Property Name="diemdanhgia" Type="smallint" />
+    <Property Name="ngaydangky" Type="date" />
+    <Property Name="taikhoanpaypal" Type="varchar" MaxLength="200" />
+    <Property Name="capdo_id" Type="uint" />
+    <Property Name="customer_id" Type="uint" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6005: The data type 'udecimal' is currently not supported for the target Entity Framework version; the column 'gia' in the table 'def.httt_dn.sanpham' was excluded.-->
+  <EntityType Name="sanpham">
+    <Key>
+      <PropertyRef Name="sanpham_id" />
+    </Key>
+    <Property Name="sanpham_id" Type="uint" Nullable="false" />
+    <Property Name="tensanpham" Type="varchar" MaxLength="300" Nullable="false" />
+    <Property Name="tongsoluongton" Type="uint" Nullable="false" />
+    <Property Name="mota" Type="varchar" MaxLength="4000" />
+    <Property Name="ngaydang" Type="date" />
+    <Property Name="tinhtrangduyet" Type="bool" />
+    <Property Name="hinhanh" Type="varchar" MaxLength="4000" />
+    <Property Name="tinhtrangkhoa" Type="bool" />
+    <Property Name="hangsanpham_id" Type="uint" />
+    <Property Name="loaisanpham_id" Type="uint" />
+    <Property Name="tinhtrangton_id" Type="uint" />
+    <Property Name="merchant_id" Type="uint" />
+    <Property Name="rating" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sanpham_khuyenmai">
+    <Key>
+      <PropertyRef Name="sanpham_id" />
+      <PropertyRef Name="khuyenmai_id" />
+    </Key>
+    <Property Name="sanpham_id" Type="uint" Nullable="false" />
+    <Property Name="khuyenmai_id" Type="uint" Nullable="false" />
+    <Property Name="muckhuyenmai" Type="int" />
+  </EntityType>
+  <EntityType Name="sanpham_khuyenmaihethong">
+    <Key>
+      <PropertyRef Name="sanpham_id" />
+      <PropertyRef Name="khuyenmaihethong_id" />
+    </Key>
+    <Property Name="sanpham_id" Type="uint" Nullable="false" />
+    <Property Name="khuyenmaihethong_id" Type="uint" Nullable="false" />
+    <Property Name="muckhuyenmai" Type="int" />
+  </EntityType>
+  <EntityType Name="sanpham_mausac">
+    <Key>
+      <PropertyRef Name="sanpham_id" />
+      <PropertyRef Name="mausac_id" />
+    </Key>
+    <Property Name="sanpham_id" Type="uint" Nullable="false" />
+    <Property Name="mausac_id" Type="uint" Nullable="false" />
+    <Property Name="soluongton" Type="uint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sanpham_thongsokythuat">
+    <Key>
+      <PropertyRef Name="sanpham_id" />
+      <PropertyRef Name="thongsokythuat_id" />
+    </Key>
+    <Property Name="sanpham_id" Type="uint" Nullable="false" />
+    <Property Name="thongsokythuat_id" Type="uint" Nullable="false" />
+    <Property Name="giatri" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="thongsokythuat">
+    <Key>
+      <PropertyRef Name="thongsokythuat_id" />
+    </Key>
+    <Property Name="thongsokythuat_id" Type="uint" Nullable="false" />
+    <Property Name="tenthongsokythuat" Type="varchar" MaxLength="40" />
+  </EntityType>
+  <EntityType Name="tinhtranggiaohang">
+    <Key>
+      <PropertyRef Name="tinhtranggiaohang_id" />
+    </Key>
+    <Property Name="tinhtranggiaohang_id" Type="uint" Nullable="false" />
+    <Property Name="tentinhtranggiaohang" Type="varchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="tinhtrangton">
+    <Key>
+      <PropertyRef Name="tinhtrangton_id" />
+    </Key>
+    <Property Name="tinhtrangton_id" Type="uint" Nullable="false" />
+    <Property Name="tentinhtrangton" Type="varchar" MaxLength="40" Nullable="false" />
+  </EntityType>
+  <Association Name="danhgia_ibfk_1">
+    <End Role="sanpham" Type="Self.sanpham" Multiplicity="0..1" />
+    <End Role="danhgia" Type="Self.danhgia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sanpham">
+        <PropertyRef Name="sanpham_id" />
+      </Principal>
+      <Dependent Role="danhgia">
+        <PropertyRef Name="sanpham_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="danhgia_ibfk_2">
+    <End Role="customer" Type="Self.customer" Multiplicity="0..1" />
+    <End Role="danhgia" Type="Self.danhgia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="customer">
+        <PropertyRef Name="customer_id" />
+      </Principal>
+      <Dependent Role="danhgia">
+        <PropertyRef Name="customer_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_loaisanpham_hangsanpham_hangsanphamID">
+    <End Role="hangsanpham" Type="Self.hangsanpham" Multiplicity="1" />
+    <End Role="loaisanpham_hangsanpham" Type="Self.loaisanpham_hangsanpham" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="hangsanpham">
+        <PropertyRef Name="hangsanpham_id" />
+      </Principal>
+      <Dependent Role="loaisanpham_hangsanpham">
+        <PropertyRef Name="hangsanpham_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_loaisanpham_hangsanpham_loaisanphamID">
+    <End Role="loaisanpham" Type="Self.loaisanpham" Multiplicity="1" />
+    <End Role="loaisanpham_hangsanpham" Type="Self.loaisanpham_hangsanpham" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="loaisanpham">
+        <PropertyRef Name="loaisanpham_id" />
+      </Principal>
+      <Dependent Role="loaisanpham_hangsanpham">
+        <PropertyRef Name="loaisanpham_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_sanpham_khuyenmai_khuyenmaiID">
+    <End Role="khuyenmai" Type="Self.khuyenmai" Multiplicity="1" />
+    <End Role="sanpham_khuyenmai" Type="Self.sanpham_khuyenmai" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="khuyenmai">
+        <PropertyRef Name="khuyenmai_id" />
+      </Principal>
+      <Dependent Role="sanpham_khuyenmai">
+        <PropertyRef Name="khuyenmai_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_sanpham_khuyenmai_sanphamID">
+    <End Role="sanpham" Type="Self.sanpham" Multiplicity="1" />
+    <End Role="sanpham_khuyenmai" Type="Self.sanpham_khuyenmai" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sanpham">
+        <PropertyRef Name="sanpham_id" />
+      </Principal>
+      <Dependent Role="sanpham_khuyenmai">
+        <PropertyRef Name="sanpham_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_sanpham_khuyenmaihethong_khuyenmaihethongID">
+    <End Role="khuyenmaihethong" Type="Self.khuyenmaihethong" Multiplicity="1" />
+    <End Role="sanpham_khuyenmaihethong" Type="Self.sanpham_khuyenmaihethong" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="khuyenmaihethong">
+        <PropertyRef Name="khuyenmaihethong_id" />
+      </Principal>
+      <Dependent Role="sanpham_khuyenmaihethong">
+        <PropertyRef Name="khuyenmaihethong_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_sanpham_khuyenmaihethong_sanphamID">
+    <End Role="sanpham" Type="Self.sanpham" Multiplicity="1" />
+    <End Role="sanpham_khuyenmaihethong" Type="Self.sanpham_khuyenmaihethong" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sanpham">
+        <PropertyRef Name="sanpham_id" />
+      </Principal>
+      <Dependent Role="sanpham_khuyenmaihethong">
+        <PropertyRef Name="sanpham_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_sanpham_mausac_mausacID">
+    <End Role="mausac" Type="Self.mausac" Multiplicity="1" />
+    <End Role="sanpham_mausac" Type="Self.sanpham_mausac" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="mausac">
+        <PropertyRef Name="mausac_id" />
+      </Principal>
+      <Dependent Role="sanpham_mausac">
+        <PropertyRef Name="mausac_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_sanpham_mausac_sanphamID">
+    <End Role="sanpham" Type="Self.sanpham" Multiplicity="1" />
+    <End Role="sanpham_mausac" Type="Self.sanpham_mausac" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sanpham">
+        <PropertyRef Name="sanpham_id" />
+      </Principal>
+      <Dependent Role="sanpham_mausac">
+        <PropertyRef Name="sanpham_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_sanpham_thongsokythuat_sanphamID">
+    <End Role="sanpham" Type="Self.sanpham" Multiplicity="1" />
+    <End Role="sanpham_thongsokythuat" Type="Self.sanpham_thongsokythuat" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sanpham">
+        <PropertyRef Name="sanpham_id" />
+      </Principal>
+      <Dependent Role="sanpham_thongsokythuat">
+        <PropertyRef Name="sanpham_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_sanpham_thongsokythuat_thongsokythuatID">
+    <End Role="thongsokythuat" Type="Self.thongsokythuat" Multiplicity="1" />
+    <End Role="sanpham_thongsokythuat" Type="Self.sanpham_thongsokythuat" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="thongsokythuat">
+        <PropertyRef Name="thongsokythuat_id" />
+      </Principal>
+      <Dependent Role="sanpham_thongsokythuat">
+        <PropertyRef Name="thongsokythuat_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="hinhanh_ibfk_1">
+    <End Role="sanpham" Type="Self.sanpham" Multiplicity="0..1" />
+    <End Role="hinhanh" Type="Self.hinhanh" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sanpham">
+        <PropertyRef Name="sanpham_id" />
+      </Principal>
+      <Dependent Role="hinhanh">
+        <PropertyRef Name="sanpham_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="hoadonban_ibfk_1">
+    <End Role="sanpham" Type="Self.sanpham" Multiplicity="0..1" />
+    <End Role="hoadonban" Type="Self.hoadonban" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sanpham">
+        <PropertyRef Name="sanpham_id" />
+      </Principal>
+      <Dependent Role="hoadonban">
+        <PropertyRef Name="sanpham_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="hoadonban_ibfk_2">
+    <End Role="merchant" Type="Self.merchant" Multiplicity="0..1" />
+    <End Role="hoadonban" Type="Self.hoadonban" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="merchant">
+        <PropertyRef Name="merchant_id" />
+      </Principal>
+      <Dependent Role="hoadonban">
+        <PropertyRef Name="merchant_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="hoadonban_ibfk_3">
+    <End Role="hinhthucthanhtoan" Type="Self.hinhthucthanhtoan" Multiplicity="0..1" />
+    <End Role="hoadonban" Type="Self.hoadonban" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="hinhthucthanhtoan">
+        <PropertyRef Name="hinhthucthanhtoan_id" />
+      </Principal>
+      <Dependent Role="hoadonban">
+        <PropertyRef Name="hinhthucthanhtoan_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="hoadonban_ibfk_4">
+    <End Role="tinhtranggiaohang" Type="Self.tinhtranggiaohang" Multiplicity="0..1" />
+    <End Role="hoadonban" Type="Self.hoadonban" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tinhtranggiaohang">
+        <PropertyRef Name="tinhtranggiaohang_id" />
+      </Principal>
+      <Dependent Role="hoadonban">
+        <PropertyRef Name="tinhtranggiaohang_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="hoadonban_ibfk_5">
+    <End Role="hoadonmua" Type="Self.hoadonmua" Multiplicity="0..1" />
+    <End Role="hoadonban" Type="Self.hoadonban" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="hoadonmua">
+        <PropertyRef Name="hoadonmua_id" />
+      </Principal>
+      <Dependent Role="hoadonban">
+        <PropertyRef Name="hoadonmua_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="hoadonban_mausac_mausacID">
+    <End Role="mausac" Type="Self.mausac" Multiplicity="0..1" />
+    <End Role="hoadonban" Type="Self.hoadonban" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="mausac">
+        <PropertyRef Name="mausac_id" />
+      </Principal>
+      <Dependent Role="hoadonban">
+        <PropertyRef Name="mausac_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="hoadonmua_ibfk_1">
+    <End Role="customer" Type="Self.customer" Multiplicity="0..1" />
+    <End Role="hoadonmua" Type="Self.hoadonmua" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="customer">
+        <PropertyRef Name="customer_id" />
+      </Principal>
+      <Dependent Role="hoadonmua">
+        <PropertyRef Name="customer_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="hoadonmua_ibfk_2">
+    <End Role="hinhthucthanhtoan" Type="Self.hinhthucthanhtoan" Multiplicity="0..1" />
+    <End Role="hoadonmua" Type="Self.hoadonmua" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="hinhthucthanhtoan">
+        <PropertyRef Name="hinhthucthanhtoan_id" />
+      </Principal>
+      <Dependent Role="hoadonmua">
+        <PropertyRef Name="hinhthucthanhtoan_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="hoadonmua_ibfk_3">
+    <End Role="tinhtranggiaohang" Type="Self.tinhtranggiaohang" Multiplicity="0..1" />
+    <End Role="hoadonmua" Type="Self.hoadonmua" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tinhtranggiaohang">
+        <PropertyRef Name="tinhtranggiaohang_id" />
+      </Principal>
+      <Dependent Role="hoadonmua">
+        <PropertyRef Name="tinhtranggiaohang_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="khuyenmai_ibfk_1">
+    <End Role="merchant" Type="Self.merchant" Multiplicity="0..1" />
+    <End Role="khuyenmai" Type="Self.khuyenmai" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="merchant">
+        <PropertyRef Name="merchant_id" />
+      </Principal>
+      <Dependent Role="khuyenmai">
+        <PropertyRef Name="merchant_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="merchant_ibfk_1">
+    <End Role="capdo" Type="Self.capdo" Multiplicity="0..1" />
+    <End Role="merchant" Type="Self.merchant" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="capdo">
+        <PropertyRef Name="capdo_id" />
+      </Principal>
+      <Dependent Role="merchant">
+        <PropertyRef Name="capdo_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="merchant_ibfk_2">
+    <End Role="customer" Type="Self.customer" Multiplicity="0..1" />
+    <End Role="merchant" Type="Self.merchant" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="customer">
+        <PropertyRef Name="customer_id" />
+      </Principal>
+      <Dependent Role="merchant">
+        <PropertyRef Name="customer_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="sanpham_ibfk_1">
+    <End Role="hangsanpham" Type="Self.hangsanpham" Multiplicity="0..1" />
+    <End Role="sanpham" Type="Self.sanpham" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="hangsanpham">
+        <PropertyRef Name="hangsanpham_id" />
+      </Principal>
+      <Dependent Role="sanpham">
+        <PropertyRef Name="hangsanpham_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="sanpham_ibfk_2">
+    <End Role="loaisanpham" Type="Self.loaisanpham" Multiplicity="0..1" />
+    <End Role="sanpham" Type="Self.sanpham" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="loaisanpham">
+        <PropertyRef Name="loaisanpham_id" />
+      </Principal>
+      <Dependent Role="sanpham">
+        <PropertyRef Name="loaisanpham_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="sanpham_ibfk_3">
+    <End Role="tinhtrangton" Type="Self.tinhtrangton" Multiplicity="0..1" />
+    <End Role="sanpham" Type="Self.sanpham" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tinhtrangton">
+        <PropertyRef Name="tinhtrangton_id" />
+      </Principal>
+      <Dependent Role="sanpham">
+        <PropertyRef Name="tinhtrangton_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="sanpham_ibfk_4">
+    <End Role="merchant" Type="Self.merchant" Multiplicity="0..1" />
+    <End Role="sanpham" Type="Self.sanpham" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="merchant">
+        <PropertyRef Name="merchant_id" />
+      </Principal>
+      <Dependent Role="sanpham">
+        <PropertyRef Name="merchant_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="httt_dnModelStoreContainer">
+    <EntitySet Name="capdo" EntityType="Self.capdo" Schema="httt_dn" store:Type="Tables" />
+    <EntitySet Name="customer" EntityType="Self.customer" Schema="httt_dn" store:Type="Tables" />
+    <EntitySet Name="danhgia" EntityType="Self.danhgia" Schema="httt_dn" store:Type="Tables" />
+    <EntitySet Name="hangsanpham" EntityType="Self.hangsanpham" Schema="httt_dn" store:Type="Tables" />
+    <EntitySet Name="hinhanh" EntityType="Self.hinhanh" Schema="httt_dn" store:Type="Tables" />
+    <EntitySet Name="hinhthucthanhtoan" EntityType="Self.hinhthucthanhtoan" Schema="httt_dn" store:Type="Tables" />
+    <EntitySet Name="hoadonban" EntityType="Self.hoadonban" Schema="httt_dn" store:Type="Tables" />
+    <EntitySet Name="hoadonmua" EntityType="Self.hoadonmua" Schema="httt_dn" store:Type="Tables" />
+    <EntitySet Name="khuyenmai" EntityType="Self.khuyenmai" Schema="httt_dn" store:Type="Tables" />
+    <EntitySet Name="khuyenmaihethong" EntityType="Self.khuyenmaihethong" Schema="httt_dn" store:Type="Tables" />
+    <EntitySet Name="loaisanpham" EntityType="Self.loaisanpham" Schema="httt_dn" store:Type="Tables" />
+    <EntitySet Name="loaisanpham_hangsanpham" EntityType="Self.loaisanpham_hangsanpham" Schema="httt_dn" store:Type="Tables" />
+    <EntitySet Name="mausac" EntityType="Self.mausac" Schema="httt_dn" store:Type="Tables" />
+    <EntitySet Name="merchant" EntityType="Self.merchant" Schema="httt_dn" store:Type="Tables" />
+    <EntitySet Name="sanpham" EntityType="Self.sanpham" Schema="httt_dn" store:Type="Tables" />
+    <EntitySet Name="sanpham_khuyenmai" EntityType="Self.sanpham_khuyenmai" Schema="httt_dn" store:Type="Tables" />
+    <EntitySet Name="sanpham_khuyenmaihethong" EntityType="Self.sanpham_khuyenmaihethong" Schema="httt_dn" store:Type="Tables" />
+    <EntitySet Name="sanpham_mausac" EntityType="Self.sanpham_mausac" Schema="httt_dn" store:Type="Tables" />
+    <EntitySet Name="sanpham_thongsokythuat" EntityType="Self.sanpham_thongsokythuat" Schema="httt_dn" store:Type="Tables" />
+    <EntitySet Name="thongsokythuat" EntityType="Self.thongsokythuat" Schema="httt_dn" store:Type="Tables" />
+    <EntitySet Name="tinhtranggiaohang" EntityType="Self.tinhtranggiaohang" Schema="httt_dn" store:Type="Tables" />
+    <EntitySet Name="tinhtrangton" EntityType="Self.tinhtrangton" Schema="httt_dn" store:Type="Tables" />
+    <AssociationSet Name="danhgia_ibfk_1" Association="Self.danhgia_ibfk_1">
+      <End Role="sanpham" EntitySet="sanpham" />
+      <End Role="danhgia" EntitySet="danhgia" />
+    </AssociationSet>
+    <AssociationSet Name="danhgia_ibfk_2" Association="Self.danhgia_ibfk_2">
+      <End Role="customer" EntitySet="customer" />
+      <End Role="danhgia" EntitySet="danhgia" />
+    </AssociationSet>
+    <AssociationSet Name="FK_loaisanpham_hangsanpham_hangsanphamID" Association="Self.FK_loaisanpham_hangsanpham_hangsanphamID">
+      <End Role="hangsanpham" EntitySet="hangsanpham" />
+      <End Role="loaisanpham_hangsanpham" EntitySet="loaisanpham_hangsanpham" />
+    </AssociationSet>
+    <AssociationSet Name="FK_loaisanpham_hangsanpham_loaisanphamID" Association="Self.FK_loaisanpham_hangsanpham_loaisanphamID">
+      <End Role="loaisanpham" EntitySet="loaisanpham" />
+      <End Role="loaisanpham_hangsanpham" EntitySet="loaisanpham_hangsanpham" />
+    </AssociationSet>
+    <AssociationSet Name="FK_sanpham_khuyenmai_khuyenmaiID" Association="Self.FK_sanpham_khuyenmai_khuyenmaiID">
+      <End Role="khuyenmai" EntitySet="khuyenmai" />
+      <End Role="sanpham_khuyenmai" EntitySet="sanpham_khuyenmai" />
+    </AssociationSet>
+    <AssociationSet Name="FK_sanpham_khuyenmai_sanphamID" Association="Self.FK_sanpham_khuyenmai_sanphamID">
+      <End Role="sanpham" EntitySet="sanpham" />
+      <End Role="sanpham_khuyenmai" EntitySet="sanpham_khuyenmai" />
+    </AssociationSet>
+    <AssociationSet Name="FK_sanpham_khuyenmaihethong_khuyenmaihethongID" Association="Self.FK_sanpham_khuyenmaihethong_khuyenmaihethongID">
+      <End Role="khuyenmaihethong" EntitySet="khuyenmaihethong" />
+      <End Role="sanpham_khuyenmaihethong" EntitySet="sanpham_khuyenmaihethong" />
+    </AssociationSet>
+    <AssociationSet Name="FK_sanpham_khuyenmaihethong_sanphamID" Association="Self.FK_sanpham_khuyenmaihethong_sanphamID">
+      <End Role="sanpham" EntitySet="sanpham" />
+      <End Role="sanpham_khuyenmaihethong" EntitySet="sanpham_khuyenmaihethong" />
+    </AssociationSet>
+    <AssociationSet Name="FK_sanpham_mausac_mausacID" Association="Self.FK_sanpham_mausac_mausacID">
+      <End Role="mausac" EntitySet="mausac" />
+      <End Role="sanpham_mausac" EntitySet="sanpham_mausac" />
+    </AssociationSet>
+    <AssociationSet Name="FK_sanpham_mausac_sanphamID" Association="Self.FK_sanpham_mausac_sanphamID">
+      <End Role="sanpham" EntitySet="sanpham" />
+      <End Role="sanpham_mausac" EntitySet="sanpham_mausac" />
+    </AssociationSet>
+    <AssociationSet Name="FK_sanpham_thongsokythuat_sanphamID" Association="Self.FK_sanpham_thongsokythuat_sanphamID">
+      <End Role="sanpham" EntitySet="sanpham" />
+      <End Role="sanpham_thongsokythuat" EntitySet="sanpham_thongsokythuat" />
+    </AssociationSet>
+    <AssociationSet Name="FK_sanpham_thongsokythuat_thongsokythuatID" Association="Self.FK_sanpham_thongsokythuat_thongsokythuatID">
+      <End Role="thongsokythuat" EntitySet="thongsokythuat" />
+      <End Role="sanpham_thongsokythuat" EntitySet="sanpham_thongsokythuat" />
+    </AssociationSet>
+    <AssociationSet Name="hinhanh_ibfk_1" Association="Self.hinhanh_ibfk_1">
+      <End Role="sanpham" EntitySet="sanpham" />
+      <End Role="hinhanh" EntitySet="hinhanh" />
+    </AssociationSet>
+    <AssociationSet Name="hoadonban_ibfk_1" Association="Self.hoadonban_ibfk_1">
+      <End Role="sanpham" EntitySet="sanpham" />
+      <End Role="hoadonban" EntitySet="hoadonban" />
+    </AssociationSet>
+    <AssociationSet Name="hoadonban_ibfk_2" Association="Self.hoadonban_ibfk_2">
+      <End Role="merchant" EntitySet="merchant" />
+      <End Role="hoadonban" EntitySet="hoadonban" />
+    </AssociationSet>
+    <AssociationSet Name="hoadonban_ibfk_3" Association="Self.hoadonban_ibfk_3">
+      <End Role="hinhthucthanhtoan" EntitySet="hinhthucthanhtoan" />
+      <End Role="hoadonban" EntitySet="hoadonban" />
+    </AssociationSet>
+    <AssociationSet Name="hoadonban_ibfk_4" Association="Self.hoadonban_ibfk_4">
+      <End Role="tinhtranggiaohang" EntitySet="tinhtranggiaohang" />
+      <End Role="hoadonban" EntitySet="hoadonban" />
+    </AssociationSet>
+    <AssociationSet Name="hoadonban_ibfk_5" Association="Self.hoadonban_ibfk_5">
+      <End Role="hoadonmua" EntitySet="hoadonmua" />
+      <End Role="hoadonban" EntitySet="hoadonban" />
+    </AssociationSet>
+    <AssociationSet Name="hoadonban_mausac_mausacID" Association="Self.hoadonban_mausac_mausacID">
+      <End Role="mausac" EntitySet="mausac" />
+      <End Role="hoadonban" EntitySet="hoadonban" />
+    </AssociationSet>
+    <AssociationSet Name="hoadonmua_ibfk_1" Association="Self.hoadonmua_ibfk_1">
+      <End Role="customer" EntitySet="customer" />
+      <End Role="hoadonmua" EntitySet="hoadonmua" />
+    </AssociationSet>
+    <AssociationSet Name="hoadonmua_ibfk_2" Association="Self.hoadonmua_ibfk_2">
+      <End Role="hinhthucthanhtoan" EntitySet="hinhthucthanhtoan" />
+      <End Role="hoadonmua" EntitySet="hoadonmua" />
+    </AssociationSet>
+    <AssociationSet Name="hoadonmua_ibfk_3" Association="Self.hoadonmua_ibfk_3">
+      <End Role="tinhtranggiaohang" EntitySet="tinhtranggiaohang" />
+      <End Role="hoadonmua" EntitySet="hoadonmua" />
+    </AssociationSet>
+    <AssociationSet Name="khuyenmai_ibfk_1" Association="Self.khuyenmai_ibfk_1">
+      <End Role="merchant" EntitySet="merchant" />
+      <End Role="khuyenmai" EntitySet="khuyenmai" />
+    </AssociationSet>
+    <AssociationSet Name="merchant_ibfk_1" Association="Self.merchant_ibfk_1">
+      <End Role="capdo" EntitySet="capdo" />
+      <End Role="merchant" EntitySet="merchant" />
+    </AssociationSet>
+    <AssociationSet Name="merchant_ibfk_2" Association="Self.merchant_ibfk_2">
+      <End Role="customer" EntitySet="customer" />
+      <End Role="merchant" EntitySet="merchant" />
+    </AssociationSet>
+    <AssociationSet Name="sanpham_ibfk_1" Association="Self.sanpham_ibfk_1">
+      <End Role="hangsanpham" EntitySet="hangsanpham" />
+      <End Role="sanpham" EntitySet="sanpham" />
+    </AssociationSet>
+    <AssociationSet Name="sanpham_ibfk_2" Association="Self.sanpham_ibfk_2">
+      <End Role="loaisanpham" EntitySet="loaisanpham" />
+      <End Role="sanpham" EntitySet="sanpham" />
+    </AssociationSet>
+    <AssociationSet Name="sanpham_ibfk_3" Association="Self.sanpham_ibfk_3">
+      <End Role="tinhtrangton" EntitySet="tinhtrangton" />
+      <End Role="sanpham" EntitySet="sanpham" />
+    </AssociationSet>
+    <AssociationSet Name="sanpham_ibfk_4" Association="Self.sanpham_ibfk_4">
+      <End Role="merchant" EntitySet="merchant" />
+      <End Role="sanpham" EntitySet="sanpham" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

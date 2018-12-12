@@ -1,0 +1,92 @@
+﻿@model Admin_MySQL.Models.merchant
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<div id="page-wrapper">
+    <div class="row">
+        <h2>Delete</h2>
+
+        <h3>Are you sure you want to delete this?</h3>
+        <div>
+            <h4>merchant</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.cmnd)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.cmnd)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.tenshop)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.tenshop)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.anhshop)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.anhshop)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.diemdanhgia)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.diemdanhgia)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.ngaydangky)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.ngaydangky)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.taikhoanpaypal)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.taikhoanpaypal)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.capdo.tencapdo)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.capdo.tencapdo)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.customer.username)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.customer.username)
+                </dd>
+
+            </dl>
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-actions no-color">
+                    <input type="submit" value="Delete" class="btn btn-default" /> |
+                    @Html.ActionLink("Back to List", "Index")
+                </div>
+            }
+        </div>
+    </div>

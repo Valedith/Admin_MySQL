@@ -1,0 +1,61 @@
+﻿@model Admin_MySQL.Models.khuyenmaihethong
+
+@{
+    ViewBag.Title = "Delete";
+}
+<div id="page-wrapper">
+    <div class="row">
+        <h2>Delete</h2>
+
+        <h3>Are you sure you want to delete this?</h3>
+        <div>
+            <h4>khuyenmaihethong</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.tenkhuyenmaihethong)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.tenkhuyenmaihethong)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.ngaybatdau)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.ngaybatdau)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.ngayketthuc)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.ngayketthuc)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.muckhuyenmaitoida)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.muckhuyenmaitoida)
+                </dd>
+
+            </dl>
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-actions no-color">
+                    <input type="submit" value="Delete" class="btn btn-default" /> |
+                    @Html.ActionLink("Back to List", "Index")
+                </div>
+            }
+        </div>
+
+    </div>
+</div>

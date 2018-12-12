@@ -1,0 +1,82 @@
+﻿@model PagedList.IPagedList<Admin_MySQL.Models.khuyenmai>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+@{
+    ViewBag.Title = "Khuyenmai";
+}
+
+<div id="page-wrapper">
+    <div class="row">
+        <h2>Khuyến mãi</h2>
+
+
+        <p>
+            @Html.ActionLink("Create New", "Create")
+        </p>
+        @using (Html.BeginForm("Index", "khuyenmais", FormMethod.Get))
+        {
+            <p>
+                Tìm kiếm theo tên khuyến mãi: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+                <input type="submit" value="Search" />
+            </p>
+        }
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.ActionLink("Mã khuyến mãi", "Index", new { sortOrder = ViewBag.IDSortParm, currentFilter = ViewBag.CurrentFilter })
+                </th>
+                <th>
+                    @Html.ActionLink("Tên khuyến mãi", "Index", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })
+                </th>
+                <th>
+                    @Html.ActionLink("Ngày bắt đầu", "Index", new { sortOrder = ViewBag.NgayBDSortParm, currentFilter = ViewBag.CurrentFilter })
+                </th>
+                <th>
+                    @Html.ActionLink("Ngày kết thúc", "Index", new { sortOrder = ViewBag.NgayKTSortParam, currentFilter = ViewBag.CurrentFilter })
+                </th>
+                <th>
+                    @Html.ActionLink("Mức khuyến mãi tối đa", "Index", new { sortOrder = ViewBag.MucKhuyenMaiToiDaSortParam, currentFilter = ViewBag.CurrentFilter })
+                </th>
+                <th>
+                    @Html.ActionLink("Tên merchant tạo khuyến mãi", "Index", new { sortOrder = ViewBag.merchantSortParam, currentFilter = ViewBag.CurrentFilter })
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.khuyenmai_id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.tenkhuyenmai)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ngaybatdau)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ngayketthuc)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.muckhuyenmaitoida)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.merchant.customer.hoten)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Sửa", "Edit", new { id = item.khuyenmai_id }) |
+                        @Html.ActionLink("Chi tiết", "Details", new { id = item.khuyenmai_id }) |
+                        @Html.ActionLink("Xóa", "Delete", new { id = item.khuyenmai_id })
+                    </td>
+                </tr>
+            }
+
+        </table>
+        </br>
+        Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+        @Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+
+    </div>
+</div>

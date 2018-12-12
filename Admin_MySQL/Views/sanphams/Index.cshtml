@@ -1,0 +1,155 @@
+﻿@model PagedList.IPagedList<Admin_MySQL.Models.sanpham>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+@{
+    ViewBag.Title = "Sanpham";
+}
+
+
+<div id="page-wrapper">
+    <div class="row">
+        <h2>Sản phẩm</h2>
+
+
+        <p>
+            @Html.ActionLink("Create New", "Create")
+        </p>
+        @using (Html.BeginForm("Index", "sanphams", FormMethod.Get))
+        {
+            <p>
+                Tìm kiếm theo tên sản phẩm: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+                <input type="submit" value="Search" />
+            </p>
+        }
+
+        <table class="table table-striped">
+            <tr>
+                <th>
+                    @Html.ActionLink("Mã sản phẩm", "Index", new { sortOrder = ViewBag.IDSortParm, currentFilter = ViewBag.CurrentFilter })
+                </th>
+                <th>
+                    @Html.ActionLink("Tên sản phẩm", "Index", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })
+                </th>
+                <th>
+                    @Html.ActionLink("Tổng số lượng tồn", "Index", new { sortOrder = ViewBag.QuantitySortParm, currentFilter = ViewBag.CurrentFilter })
+                </th>
+                <th>
+                    @Html.ActionLink("Mô tả", "Index", new { sortOrder = ViewBag.DescriptionSortParam, currentFilter = ViewBag.CurrentFilter })
+                </th>
+                <th>
+                    @Html.ActionLink("Ngày đăng", "Index", new { sortOrder = ViewBag.PostDateSortParam, currentFilter = ViewBag.CurrentFilter })
+                </th>
+                <th>
+                    Hình ảnh
+                </th>
+                <th>
+                    @Html.ActionLink("Tình trạng duyệt", "Index", new { sortOrder = ViewBag.isCheckedSortParam, currentFilter = ViewBag.CurrentFilter })
+                </th>
+                <th>
+                    @Html.ActionLink("Tình trạng khóa", "Index", new { sortOrder = ViewBag.isLockedSortParam, currentFilter = ViewBag.CurrentFilter })
+                </th>
+                <th>
+                    @Html.ActionLink("Tên hãng sản phẩm", "Index", new { sortOrder = ViewBag.hangsanphamIDSortParam, currentFilter = ViewBag.CurrentFilter })
+                </th>
+                <th>
+                    @Html.ActionLink("Tên loại sản phẩm", "Index", new { sortOrder = ViewBag.loaisanphamIDSortParam, currentFilter = ViewBag.CurrentFilter })
+                </th>
+                <th>
+                    @Html.ActionLink("Tên tình trạng tồn", "Index", new { sortOrder = ViewBag.tinhtrangtonIDSortParam, currentFilter = ViewBag.CurrentFilter })
+                </th>
+                <th>
+                    @Html.ActionLink("CMND của người bán", "Index", new { sortOrder = ViewBag.merchantIDSortParam, currentFilter = ViewBag.CurrentFilter })
+                </th>
+                <th>
+                    Thao tác
+                </th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.sanpham_id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.tensanpham)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.tongsoluongton)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.mota)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ngaydang)
+                    </td>
+                    <td>
+                        <img src="@Html.DisplayFor(modelItem => item.hinhanh)" alt="Không có" height="42" width="42" />
+                    </td>
+                    <td>
+                        @if (@Html.DisplayFor(modelItem => item.tinhtrangduyet).Equals(true))
+                        {
+                            @Html.Raw("Đã duyệt")
+                        }
+                        else
+                        {
+                            @Html.Raw("Đang chờ duyệt")
+                        }
+                    </td>
+                    <td>
+                        @if (@Html.DisplayFor(modelItem => item.tinhtrangkhoa).Equals(true))
+                        {
+                            @Html.Raw("Đã bị khóa")
+                        }
+                        else
+                        {
+                            @Html.Raw("Đang hoạt động")
+                        }
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.hangsanpham.tenhangsanpham)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.loaisanpham.tenloaisanpham)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.tinhtrangton.tentinhtrangton)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.merchant.cmnd)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Sửa", "Edit", new { id = item.sanpham_id }) |
+                        @Html.ActionLink("Chi tiết", "Details", new { id = item.sanpham_id }) |
+                        @Html.ActionLink("Xóa", "Delete", new { id = item.sanpham_id })
+                        @Html.ActionLink("Khóa", "Lock", new { id = item.sanpham_id })
+                    </td>
+                </tr>
+            }
+
+        </table>
+        <br />
+        Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+        @Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+    </div>
+    <table id="table_id" class="display">
+        <thead>
+            <tr>
+                <th>Column 1</th>
+                <th>Column 2</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Row 1 Data 1</td>
+                <td>Row 1 Data 2</td>
+            </tr>
+            <tr>
+                <td>Row 2 Data 1</td>
+                <td>Row 2 Data 2</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

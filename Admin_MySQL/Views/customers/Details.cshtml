@@ -1,0 +1,127 @@
+﻿@model Admin_MySQL.Models.customer
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div id="page-wrapper">
+    <div class="row">
+        <h2>Details</h2>
+
+        <div>
+            <h4>customer</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.username)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.username)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.salt)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.salt)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.password)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.password)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.email)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.email)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.ngaydangky)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.ngaydangky)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.tienao)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.tienao)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.tinhtrangkichhoat)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.tinhtrangkichhoat)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.hoten)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.hoten)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.ngaysinh)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.ngaysinh)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.sodienthoai)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.sodienthoai)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.gioitinh)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.gioitinh)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.diachi)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.diachi)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.ismechant)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.ismechant)
+                </dd>
+
+            </dl>
+        </div>
+        <p>
+            @Html.ActionLink("Edit", "Edit", new { id = Model.customer_id }) |
+            @Html.ActionLink("Back to List", "Index")
+        </p>
+
+    </div>
+</div>

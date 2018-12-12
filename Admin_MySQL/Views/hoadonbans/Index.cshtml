@@ -1,0 +1,106 @@
+﻿@model PagedList.IPagedList<Admin_MySQL.Models.hoadonban>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+@{
+    ViewBag.Title = "Hoadonban";
+}
+
+<div id="page-wrapper">
+    <div class="row">
+        <h2>Hóa đơn bán</h2>
+
+
+        <p>
+            @Html.ActionLink("Create New", "Create")
+        </p>
+        @using (Html.BeginForm("Index", "hoadonbans", FormMethod.Get))
+        {
+            <p>
+                Tìm kiếm theo tên người gửi: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+                <input type="submit" value="Search" />
+            </p>
+        }
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.ActionLink("Mã hóa đơn bán", "Index", new { sortOrder = ViewBag.IDSortParm, currentFilter = ViewBag.CurrentFilter })
+                </th>
+                <th>
+                    @Html.ActionLink("Ngày tạo", "Index", new { sortOrder = ViewBag.NgayTaoSortParm, currentFilter = ViewBag.CurrentFilter })
+                </th>
+                <th>
+                    @Html.ActionLink("Ngày hoàn thành", "Index", new { sortOrder = ViewBag.NgayHTSortParm, currentFilter = ViewBag.CurrentFilter })
+                </th>
+                <th>
+                    @Html.ActionLink("Nơi gửi", "Index", new { sortOrder = ViewBag.NoiGuiSortParam, currentFilter = ViewBag.CurrentFilter })
+                </th>
+                <th>
+                    @Html.ActionLink("Số lượng", "Index", new { sortOrder = ViewBag.SoLuongSortParam, currentFilter = ViewBag.CurrentFilter })
+                </th>
+                <th>
+                    @Html.ActionLink("Hình thức thanh toán", "Index", new { sortOrder = ViewBag.HTThanhToanSortParam, currentFilter = ViewBag.CurrentFilter })
+                </th>
+                <th>
+                    @Html.ActionLink("Tên sản phẩm", "Index", new { sortOrder = ViewBag.SanPhamSortParam, currentFilter = ViewBag.CurrentFilter })
+                </th>
+                <th>
+                    @Html.ActionLink("Tên merchant", "Index", new { sortOrder = ViewBag.MerchantSortParam, currentFilter = ViewBag.CurrentFilter })
+                </th>
+                <th>
+                    @Html.ActionLink("Tình trạng giao hàng", "Index", new { sortOrder = ViewBag.TinhTrangGiaoHangSortParam, currentFilter = ViewBag.CurrentFilter })
+                </th>
+                <th>
+                    @Html.ActionLink("Tên người nhận", "Index", new { sortOrder = ViewBag.HoaDonMuaSortParam, currentFilter = ViewBag.CurrentFilter })
+                </th>
+                <th>Thao tác</th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.hoadonban_id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ngaytao)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ngayhoanthanh)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.noigui)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.soluong)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.hinhthucthanhtoan.tenhinhthucthanhtoan)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.sanpham.tensanpham)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.merchant.customer.hoten)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.tinhtranggiaohang.tentinhtranggiaohang)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.hoadonmua.customer.hoten)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Sửa", "Edit", new { id = item.hoadonban_id }) |
+                        @Html.ActionLink("Chi tiết", "Details", new { id = item.hoadonban_id }) |
+                        @Html.ActionLink("Xóa", "Delete", new { id = item.hoadonban_id })
+                    </td>
+                </tr>
+            }
+
+        </table>
+        </br>
+        Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+        @Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+
+    </div>
+</div>

@@ -1,0 +1,125 @@
+﻿@model Admin_MySQL.Models.sanpham
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div id="page-wrapper">
+    <div class="row">
+        <h2>Details</h2>
+
+        <div>
+            <h4>sanpham</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    Tên sản phẩm
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.tensanpham)
+                </dd>
+
+                <dt>
+                    Tổng số lượng tồn
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.tongsoluongton)
+                </dd>
+
+                <dt>
+                    Mô tả
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.mota)
+                </dd>
+
+                <dt>
+                    Ngày đăng
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.ngaydang)
+                </dd>
+
+                <dt>
+                    Tình trạng duyệt
+                </dt>
+
+                <dd>
+                    @if (@Html.DisplayFor(model => model.tinhtrangduyet).Equals(true))
+                    {
+                        @Html.Raw("Đã duyệt")
+                    }
+                    else
+                    {
+                        @Html.Raw("Đang chờ duyệt")
+                    }
+                </dd>
+
+                <dt>
+                    Hình ảnh
+                </dt>
+
+                <dd>
+                    <img src="@Html.DisplayFor(model => model.hinhanh)" alt="Không có" height="42" width="42" />
+                </dd>
+
+                <dt>
+                    Tình trạng khóa
+                </dt>
+
+                <dd>
+                    @if (@Html.DisplayFor(model => model.tinhtrangkhoa).Equals(true))
+                    {
+                        @Html.Raw("Đã bị khóa")
+                    }
+                    else
+                    {
+                        @Html.Raw("Đang hoạt động")
+                    }
+                </dd>
+
+                <dt>
+                    Tên hãng sản phẩm
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.hangsanpham.tenhangsanpham)
+                </dd>
+
+                <dt>
+                    Tên loại sản phẩm
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.loaisanpham.tenloaisanpham)
+                </dd>
+
+                <dt>
+                    CMND của người bán
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.merchant.cmnd)
+                </dd>
+
+                <dt>
+                    Tình trạng tồn
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.tinhtrangton.tentinhtrangton)
+                </dd>
+
+            </dl>
+        </div>
+        <p>
+            @Html.ActionLink("Edit", "Edit", new { id = Model.sanpham_id }) |
+            @Html.ActionLink("Back to List", "Index")
+        </p>
+
+    </div>
+</div>

@@ -1,0 +1,86 @@
+﻿@model Admin_MySQL.Models.merchant
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div id="page-wrapper">
+    <div class="row">
+        <h2>Details</h2>
+
+        <div>
+            <h4>merchant</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.cmnd)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.cmnd)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.tenshop)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.tenshop)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.anhshop)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.anhshop)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.diemdanhgia)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.diemdanhgia)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.ngaydangky)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.ngaydangky)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.taikhoanpaypal)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.taikhoanpaypal)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.capdo.tencapdo)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.capdo.tencapdo)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.customer.username)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.customer.username)
+                </dd>
+
+            </dl>
+        </div>
+        <p>
+            @Html.ActionLink("Edit", "Edit", new { id = Model.merchant_id }) |
+            @Html.ActionLink("Back to List", "Index")
+        </p>
+    </div>
+</div>

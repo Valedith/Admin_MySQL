@@ -1,0 +1,124 @@
+﻿@model PagedList.IPagedList<Admin_MySQL.Models.customer>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+@{
+    ViewBag.Title = "Customer";
+}
+
+<div id="page-wrapper">
+    <div class="row">
+        <h2>Customer</h2>
+
+
+        <p>
+            @Html.ActionLink("Create New", "Create")
+        </p>
+        @using (Html.BeginForm("Index", "customers", FormMethod.Get))
+        {
+            <p>
+                Tìm kiếm theo tên Customer: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+                <input type="submit" value="Search" />
+            </p>
+        }
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.ActionLink("ID Customer", "Index", new { sortOrder = ViewBag.IDSortParm, currentFilter = ViewBag.CurrentFilter })
+                </th>
+                <th>
+                    @Html.ActionLink("Tên customer", "Index", new { sortOrder = ViewBag.NameIDSortParam, currentFilter = ViewBag.CurrentFilter })
+                </th>
+                <th>
+                    @Html.ActionLink("Tên đăng nhập", "Index", new { sortOrder = ViewBag.UsernameSortParm, currentFilter = ViewBag.CurrentFilter })
+                </th>
+                <th>
+                    @Html.ActionLink("Mật khẩu", "Index", new { sortOrder = ViewBag.PasswordSortParam, currentFilter = ViewBag.CurrentFilter })
+                </th>
+                <th>
+                    @Html.ActionLink("Email", "Index", new { sortOrder = ViewBag.EmailSortParam, currentFilter = ViewBag.CurrentFilter })
+                </th>
+                <th>
+                    @Html.ActionLink("Ngày đăng ký", "Index", new { sortOrder = ViewBag.RegDateSortParam, currentFilter = ViewBag.CurrentFilter })
+                </th>
+                <th>
+                    @Html.ActionLink("Tiền ảo", "Index", new { sortOrder = ViewBag.TienAoSortParam, currentFilter = ViewBag.CurrentFilter })
+                </th>
+                <th>
+                    @Html.ActionLink("Tình trạng kích hoạt", "Index", new { sortOrder = ViewBag.isActivateSortParam, currentFilter = ViewBag.CurrentFilter })
+                </th>
+                <th>
+                    @Html.ActionLink("Ngày sinh", "Index", new { sortOrder = ViewBag.NgaySinhIDSortParam, currentFilter = ViewBag.CurrentFilter })
+                </th>
+                <th>
+                    @Html.ActionLink("Số điện thoại", "Index", new { sortOrder = ViewBag.DienThoaiIDSortParam, currentFilter = ViewBag.CurrentFilter })
+                </th>
+                <th>
+                    @Html.ActionLink("Giới tính", "Index", new { sortOrder = ViewBag.GioiTinhSortParam, currentFilter = ViewBag.CurrentFilter })
+                </th>
+                <th>
+                    @Html.ActionLink("Địa chỉ", "Index", new { sortOrder = ViewBag.DiaChiSortParam, currentFilter = ViewBag.CurrentFilter })
+                </th>
+                <th>
+                    @Html.ActionLink("Chức vụ merchant", "Index", new { sortOrder = ViewBag.isMerchantIDSortParam, currentFilter = ViewBag.CurrentFilter })
+                </th>
+                <th>Thao tác</th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.customer_id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.hoten)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.username)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.password)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ngaydangky)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.tienao)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.tinhtrangkichhoat)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ngaysinh)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.sodienthoai)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.gioitinh)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.diachi)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ismechant)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Sửa", "Edit", new { id = item.customer_id }) |
+                        @Html.ActionLink("Chi tiết", "Details", new { id = item.customer_id }) |
+                        @Html.ActionLink("Khóa", "Lock", new { id = item.customer_id })
+                    </td>
+                </tr>
+            }
+
+        </table>
+        </br>
+        Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+        @Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+
+    </div>
+</div>
